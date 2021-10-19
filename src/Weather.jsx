@@ -7,7 +7,7 @@ import HighchartsReact from 'highcharts-react-official'
 
 function Weather(props) {
     // const API_key = "e75b39b56e354740aa3102619211504";
-    const path = 'http://api.weatherapi.com/v1/forecast.json?key=e75b39b56e354740aa3102619211504&days=5&aqi=yes&alerts=no&q='
+    const path = 'https://api.weatherapi.com/v1/forecast.json?key=e75b39b56e354740aa3102619211504&days=5&aqi=yes&alerts=no&q='
     // const REQUESTED_URL = 'https://api.weatherapi.com/v1/forecast.json?key=' + API_key + 'days=5&aqi=yes&q=';
     let inputRef = useRef();
 
