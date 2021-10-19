@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import './Styles.css';
 import WeatherCard from './WeatherCard';
-import Highcharts, { color } from 'highcharts'
+import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 function Weather(props) {
@@ -91,16 +91,30 @@ function Weather(props) {
     };
 
     const options = {
+        chart: {
+            backgroundColor: '#000',
+            type: 'line'
+        },
         xAxis: {
             categories: labels,
+            title: {
+                text: 'Dates',
+                style: {
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color:'#FCFFC5'
+                }
+             },
+
             labels: {
                 style: {
                     fontSize: '13px',
                     fontFamily: 'sans-serif',
-                    color:'#000'
+                    color:'#FCFFC5'
 
                 },
-            }
+            },
+
         },
         yAxis: {
             title:{
@@ -108,10 +122,18 @@ function Weather(props) {
                 style: {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
-                    color:'#000'
+                    color:'#FCFFC5'
                 },
 
-            }
+
+            },
+            labels: {
+                format: '{value}\xB0C',
+                style: {
+                   color: Highcharts.getOptions().colors[5]
+                }
+             },
+
 
         },
         title: {
@@ -119,13 +141,34 @@ function Weather(props) {
             style: {
                 fontSize: '25px',
                 fontFamily: 'sans-serif',
-                color:'#000'
+                color:'#FCFFC5'
             },
         },
-        series: [{
-            name: 'Dates',
-            data: temps
+
+        legend: {
+            layout: 'vertical',
+
+            align: 'top',
+             verticalAlign: 'right',
+            borderWidth: 0,
+            backgroundColor: (
+                Highcharts.theme && Highcharts.theme.legendBackgroundColor)
+                || '#FFFFFF'
         },
+
+        series: [{
+            name: 'Temperature',
+
+            type: 'spline',
+            data: temps,
+            tooltip: {
+                valueSuffix: '\xB0C',
+                style: {
+                    color: Highcharts.getOptions().colors[5]
+                 }
+             }
+        },
+
 
         ]
     }
