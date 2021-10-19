@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import './Styles.css';
 import WeatherCard from './WeatherCard';
-import Highcharts from 'highcharts'
+import Highcharts, { color } from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 function Weather(props) {
@@ -86,13 +86,6 @@ function Weather(props) {
                 setAqiIcon(getEmoji(result.current.air_quality.pm10.toFixed(2)));
                 setAqi(result.current.air_quality.pm10.toFixed(2))
                 inputRef.current.value = '';
-
-
-
-
-
-
-
             });
 
     };
@@ -103,7 +96,9 @@ function Weather(props) {
             labels: {
                 style: {
                     fontSize: '13px',
-                    fontFamily: ' sans-serif'
+                    fontFamily: 'sans-serif',
+                    color:'#000'
+
                 },
             }
         },
@@ -111,15 +106,21 @@ function Weather(props) {
             title:{
                 text:'Temperature',
                 style: {
-                    fontSize: '13px',
-                    fontFamily: 'sans-serif'
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color:'#000'
                 },
 
             }
 
         },
         title: {
-            text: 'Weather chart'
+            text: 'Weather chart',
+            style: {
+                fontSize: '25px',
+                fontFamily: 'sans-serif',
+                color:'#000'
+            },
         },
         series: [{
             name: 'Dates',
